@@ -107,6 +107,10 @@ function App() {
                       <Mail size={16} className="mr-2" />
                       9probalsen@gmail.com
                     </a>
+                    <a href="mailto:your.email@example.com" className="text-gray-600 hover:text-indigo-600 transition-colors flex items-center">
+                      <Mail size={16} className="mr-2" />
+                      sumanpanja2005@gmail.com
+                    </a>
                   </li>
                 </ul>
               </div>
