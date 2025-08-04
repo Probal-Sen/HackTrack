@@ -1,15 +1,15 @@
-import { Hackathon } from '../types/hackathon';
+import { Hackathon } from "../types/hackathon";
 
-const STORAGE_KEY = 'hackathon-tracker-data';
+const STORAGE_KEY = "hackathon-tracker-data";
 
 export const getHackathons = (): Hackathon[] => {
   const storedData = localStorage.getItem(STORAGE_KEY);
   if (!storedData) return [];
-  
+
   try {
     return JSON.parse(storedData);
   } catch (error) {
-    console.error('Error parsing hackathon data:', error);
+    console.error("Error parsing hackathon data:", error);
     return [];
   }
 };
@@ -25,14 +25,16 @@ export const addHackathon = (hackathon: Hackathon): void => {
 
 export const updateHackathon = (updatedHackathon: Hackathon): void => {
   const currentHackathons = getHackathons();
-  const updatedList = currentHackathons.map(hackathon => 
-    hackathon.id === updatedHackathon.id ? updatedHackathon : hackathon
+  const updatedList = currentHackathons.map((hackathon) =>
+    hackathon.id === updatedHackathon.id ? updatedHackathon : hackathon,
   );
   saveHackathons(updatedList);
 };
 
 export const deleteHackathon = (id: string): void => {
   const currentHackathons = getHackathons();
-  const updatedList = currentHackathons.filter(hackathon => hackathon.id !== id);
+  const updatedList = currentHackathons.filter(
+    (hackathon) => hackathon.id !== id,
+  );
   saveHackathons(updatedList);
 };

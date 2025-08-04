@@ -7,4 +7,4 @@ export interface Hackathon {
   createdAt: string;
 }
 
-export type HackathonFilter = 'all' | 'upcoming' | 'completed';
+export type HackathonFilter = "all" | "upcoming" | "completed";
