@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useHackathons } from '../contexts/HackathonContext';
-import { CalendarDays, PenLine, Plus, X } from 'lucide-react';
+import React, { useState } from "react";
+import { useHackathons } from "../contexts/HackathonContext";
+import { CalendarDays, PenLine, Plus, X } from "lucide-react";
 
 interface HackathonFormProps {
   onClose: () => void;
@@ -8,22 +8,22 @@ interface HackathonFormProps {
 
 const HackathonForm: React.FC<HackathonFormProps> = ({ onClose }) => {
   const { addNewHackathon } = useHackathons();
-  const [name, setName] = useState('');
-  const [date, setDate] = useState('');
-  const [notes, setNotes] = useState('');
-  const [errors, setErrors] = useState<{name?: string; date?: string}>({});
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [notes, setNotes] = useState("");
+  const [errors, setErrors] = useState<{ name?: string; date?: string }>({});
 
   const validateForm = () => {
-    const newErrors: {name?: string; date?: string} = {};
+    const newErrors: { name?: string; date?: string } = {};
     let isValid = true;
 
     if (!name.trim()) {
-      newErrors.name = 'Hackathon name is required';
+      newErrors.name = "Hackathon name is required";
       isValid = false;
     }
 
     if (!date) {
-      newErrors.date = 'Date is required';
+      newErrors.date = "Date is required";
       isValid = false;
     }
 
@@ -33,19 +33,19 @@ const HackathonForm: React.FC<HackathonFormProps> = ({ onClose }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       addNewHackathon({
         name,
         date,
         notes,
-        completed: false
+        completed: false,
       });
-      
+
       // Reset form and close
-      setName('');
-      setDate('');
-      setNotes('');
+      setName("");
+      setDate("");
+      setNotes("");
       onClose();
     }
   };
@@ -54,7 +54,7 @@ const HackathonForm: React.FC<HackathonFormProps> = ({ onClose }) => {
     <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold text-gray-800">Add New Hackathon</h2>
-        <button 
+        <button
           onClick={onClose}
           className="p-1 rounded-full hover:bg-gray-100 transition-colors"
         >
@@ -64,7 +64,10 @@ const HackathonForm: React.FC<HackathonFormProps> = ({ onClose }) => {
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="hackathon-name" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="hackathon-name"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Hackathon Name*
           </label>
           <div className="relative">
@@ -73,16 +76,24 @@ const HackathonForm: React.FC<HackathonFormProps> = ({ onClose }) => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className={`w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-9`}
+              className={`w-full px-3 py-2 border ${errors.name ? "border-red-500" : "border-gray-300"} rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-9`}
               placeholder="e.g., ReactCon Hackathon 2025"
             />
-            <PenLine size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <PenLine
+              size={16}
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            />
           </div>
-          {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+          {errors.name && (
+            <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+          )}
         </div>
 
         <div className="mb-4">
-          <label htmlFor="hackathon-date" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="hackathon-date"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Date*
           </label>
           <div className="relative">
@@ -91,15 +102,23 @@ const HackathonForm: React.FC<HackathonFormProps> = ({ onClose }) => {
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className={`w-full px-3 py-2 border ${errors.date ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-9`}
+              className={`w-full px-3 py-2 border ${errors.date ? "border-red-500" : "border-gray-300"} rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-9`}
             />
-            <CalendarDays size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <CalendarDays
+              size={16}
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            />
           </div>
-          {errors.date && <p className="mt-1 text-sm text-red-600">{errors.date}</p>}
+          {errors.date && (
+            <p className="mt-1 text-sm text-red-600">{errors.date}</p>
+          )}
         </div>
 
         <div className="mb-6">
-          <label htmlFor="hackathon-notes" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="hackathon-notes"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Notes (Optional)
           </label>
           <textarea
