@@ -68,15 +68,19 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ hackathon }) => {
         hackathon.completed
           ? "border-emerald-500"
           : isUpcoming
-            ? "border-indigo-500"
-            : "border-amber-500"
+          ? "border-indigo-500"
+          : "border-amber-500"
       }`}
     >
       <div className="p-5">
         <div className="flex justify-between items-start">
           <div className="flex-1">
             <h3
-              className={`text-xl font-bold ${hackathon.completed ? "text-gray-500 line-through" : "text-gray-800"}`}
+              className={`text-xl font-bold ${
+                hackathon.completed
+                  ? "text-gray-500 line-through"
+                  : "text-gray-800"
+              }`}
             >
               {hackathon.name}
             </h3>
@@ -92,8 +96,8 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ hackathon }) => {
                   hackathon.completed
                     ? "bg-emerald-100 text-emerald-800"
                     : isUpcoming
-                      ? "bg-indigo-100 text-indigo-800"
-                      : "bg-amber-100 text-amber-800"
+                    ? "bg-indigo-100 text-indigo-800"
+                    : "bg-amber-100 text-amber-800"
                 }`}
               >
                 {hackathon.completed ? (
@@ -104,8 +108,8 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ hackathon }) => {
                 {hackathon.completed
                   ? "Completed"
                   : isUpcoming
-                    ? "Upcoming"
-                    : "Past due"}
+                  ? "Upcoming"
+                  : "Past due"}
               </span>
             </div>
           </div>
@@ -160,7 +164,7 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ hackathon }) => {
               <textarea
                 value={editedNotes}
                 onChange={(e) => setEditedNotes(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 min-h-[80px]"
+                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 min-h-[80px] text-black"
                 placeholder="Add your notes or memories about this hackathon..."
               />
               <div className="flex justify-end space-x-2 mt-2">
@@ -181,7 +185,7 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ hackathon }) => {
               </div>
             </div>
           ) : (
-            <p className="text-gray-600 text-sm">
+            <p className="text-black text-sm">
               {hackathon.notes ? (
                 hackathon.notes
               ) : (
